@@ -16,14 +16,20 @@ namespace CSharpUdemy
             StaticMethods(); //Статический (относятся к типу int.Parse()) и не статические методы x.Concat()
             ApiBase(); //Вызываем метод базового API
             EmptyString(); //Тема пустые строки
-       //  StringChanges(); //Изменение строк
+        // StringChanges(); //Изменение строк
             StrBuilder(); //Используется для считывания строк StringBUilder работает быстрее всех
             FormatString(); //Формат строк
             SpecialFormat(); //Специализированный формат строк
             EqualString(); //Сравнивание строк
-      //    ReadingFromConsole(); //Работа с консолью, чтение с консоли
+         // ReadingFromConsole(); //Работа с консолью, чтение с консоли
             ParsingTypes(); //Преобразование типов, парсинг
-            Math();
+            MathMethods(); //Класс Math, его функции (округление, взятие квадратного корня)
+            MassivesBegin(); //Введение в массивы
+            DateAndTime(); //Знакомство с DateTime
+         // HomeWork1(); //Домашнее задание 1
+         // HomeWork2(); //Домашнее задание 2 Формула Герона                           
+            HomeWork3(); //Домашнее задание 3 Профиль пользователя Индекс массы тела
+         
         }
         
        
@@ -283,12 +289,169 @@ namespace CSharpUdemy
             Console.WriteLine($"Преобразование типа в float: {result}"); //String через Parse, остальные через явные преобразования          
         }
 //----------------------------------------------------------------------------------------------------------------------------------------------
-        static void Math() //Класс Math
+        static void MathMethods() //Класс Math (округление, взятие квадратного корня)
         {
-
+            Console.WriteLine("Возведение числа 2 в степень 3: " + Math.Pow(2, 3)); //Возведение числа 2 в степень 3
+            Console.WriteLine("Квадратный корень из 9: " + Math.Sqrt(9));  //Квадратный корень из 9 = 3
+            Console.WriteLine("Округление числа: " + Math.Round(145.87));  //Округление Round
+            Console.WriteLine("Округление к четному числу, ис-пя в финансовых операциях: " + Math.Round(145.87, MidpointRounding.ToEven)); //округление к ближайшему четному числу, исп-ся в финансовых операциях
         }
+//----------------------------------------------------------------------------------------------------------------------------------------------
+        static void MassivesBegin() //Введение в массивы
+        {
+            //Способы объявления массива:
 
+            //1) Способ:
+            int[] a1;
+            a1 = new int[10];
+            Console.WriteLine("Длина массива равна: " + a1.Length);
+            //2) Способ:
+            int[] a2 = new int[5]  {5, 12, 22, -1, -6 }; //инициализация массива
+            Console.WriteLine("Обращаемся к последнему элементу массива: " + a2[a2.Length-1]); //Обращаемся к последнему элементу массива
+            //3) Способ:
+            int[] a3 = new int[5] { 1, 3, 2, 4, 5 }; //Инициализация массива и его объявление
+            Console.WriteLine("Обращение к массиву по индексу " + a3[1]+", "+a3[4]); //Обращение к массиву по индексу
 
+            //4) Способ:
+            int[] x = { 1, 2, 4, 17, 20, 15, 10, 8, 3, 5, 10 };
+            Console.WriteLine("Массив числел: ");
+            for (int i = 0; i < x.Length; i ++)
+            Console.Write(x[i]);
+            Console.WriteLine();
+            //Вывод типа строка string
+            string str = "Какой-то текст";
+            char first = str[0];  //Вывод первой буквы по индексу нуль
+            char last = str[str.Length - 1]; //вывод крайней буквы по индексу -1
+            Console.WriteLine(first+", "+ last);
+        }
+//----------------------------------------------------------------------------------------------------------------------------------------------
+        static void DateAndTime() //Знакомство с DateTime
+        {
+            DateTime now = DateTime.Now; //Текущее время
+            Console.WriteLine($"Текущее время: {now}");
+            DateTime newDate = DateTime.Now;
+            DateTime k = newDate.AddDays(15); //прибавили 15 дней к текущей дате
+            Console.WriteLine("Новая дата " + k);
+            DateTime date = new DateTime(2016, 01, 15);
+            TimeSpan ts = now - date; //Вычитание 2х дат
+            //Тоже самое: что и 
+            ts = now.Subtract(date);
+            Console.WriteLine(ts.Days); //Вывод в днях          
+        }
+//----------------------------------------------------------------------------------------------------------------------------------------------
+        static void HomeWork1() //Домащнее задание 1
+        {
+            //1. Запросить имя пользователя. Вывести Hello, [имя пользователя].
+            /*2. Запросить у пользователя два целых числа и сохранить в двух переменных. Вывести значения.
+                 Обменять значения переменных: 
+                 например, если в переменной x было записано число 3, а в y число 5, 
+                 сделать так, чтобы в y стало 3, а в x стало 5. 
+                 Вывести значения после обмена.
+              3. Запросить у пользователя целое число. Вывести количество цифр числа. 
+                 Например, в числе 156 - 3 цифры.          
+             */
+            //1. пункт ДЗ
+            Console.WriteLine("Введите пожалуйста свое имя: ");
+            string name = Console.ReadLine();
+            Console.WriteLine($"Hi, {name}! Welcome back!");
 
+            //2. пункт ДЗ
+            Console.WriteLine("Введите 2 целых числа:");
+            string a = Console.ReadLine(); //Либо так без доп переменных: int a = int.Parse(Console.ReadLine());
+            string b = Console.ReadLine();  // int b = int.Parse(Console.ReadLine());                    
+            int convertA = int.Parse(a);
+            int convertB = int.Parse(b);
+            Console.WriteLine($"Первое число: {convertA}, второе число: {convertB}");
+
+            int tmp = convertA;  //вводим новую переменную меняем значение месатми
+            convertA = convertB;
+            convertB = tmp;           
+            Console.WriteLine($"Измененное значение 1: {convertA}");   //Меняем значения местами               
+            Console.WriteLine($"Измененное значение 2: {convertB}");
+
+            //3. пункт ДЗ
+            Console.WriteLine("Введите любое целове число:");
+            string number = Console.ReadLine();                              
+            Console.WriteLine($"Число: {number} имеет {number.Length} цифр(ы)"); //Сколько чисел имеет введенная цифра
+        }
+//----------------------------------------------------------------------------------------------------------------------------------------------
+        static void HomeWork2() //Формула Герона Д/З
+        {
+            /*Запросить у пользователя длины трёх сторон треугольника. 
+             * Длины могут быть представлены дробными значениями.             
+             * После получения длин сторон - использовать формулу Герона для вычисления площади треугольника.
+             * Чтобы жизнь не казалась мёдом найдите формулу самостоятельно.
+               После вычисления площади - вывести результат на консоль.
+            */
+
+            Console.WriteLine("Укажите длины сторон треугольника: ");
+            double a = double.Parse(Console.ReadLine());
+            double b = double.Parse(Console.ReadLine());
+            double c = double.Parse(Console.ReadLine());
+            double p = (a + b + c) / 2;
+            double S = p * (p - a) * (p - b) * (p - c);
+            S = Math.Sqrt(S); //Квадратный корень числа
+            S = Math.Round(S, 4); //Форматированный вывод, 4 знака, после запятой
+            Console.WriteLine($"Площадь по формуле Герона равна: {S}");
+        }
+//----------------------------------------------------------------------------------------------------------------------------------------------
+         static void HomeWork3() //Профиль пользователя Индекс массы телаД/З 
+        {
+            /*Запросить у пользователя: 
+             * фамилию, 
+             * имя, 
+             * возраст, 
+             * вес, 
+             * рост.
+             Высчитать ИМТ (индекс массы тела) по формуле 
+             ИМТ = вес (кг) / (рост (м) * рост (м))
+
+             Сформировать единую строку, в следующем формате:
+             Your profile:
+             Full Name: фамилия, имя
+             Age: возрост
+             Weight: вес
+             Height: рост
+             Body Mass Index: ИМТ
+             Вывести сформированную строку на консоль.           
+             */
+            Console.WriteLine("Пожалуйста, введите Вашу Фамилию: ");
+            string surname = Console.ReadLine();
+           
+            Console.WriteLine("Введите Ваше имя:");
+            string name = Console.ReadLine();
+           
+            Console.WriteLine("Введите возраст: ");
+            int age = int.Parse(Console.ReadLine());
+           
+            Console.WriteLine("Укажите вес: ");
+            double weight = double.Parse(Console.ReadLine());
+
+            Console.WriteLine("Ваш рост: ");
+            double height = double.Parse(Console.ReadLine());
+
+            double indexMassBody = weight / (height/100 * height/100);
+            indexMassBody = Math.Round(indexMassBody, 2); //округление до 2х знаков после запятой
+            
+            Console.Write ($"Ваш профиль: {Environment.NewLine}" +
+                              $"Полное имя:{surname} {name}{Environment.NewLine}" +
+                              $"Возраст: {age}{Environment.NewLine}" +
+                              $"Вес: {weight}{Environment.NewLine}" +
+                              $"Рост: {height}{Environment.NewLine}" +
+                              $"Индекс Массы Тела: {indexMassBody}");
+            if (indexMassBody > 18 && indexMassBody < 24)
+            {
+                Console.WriteLine(" - ИМТ в норме!");
+            }
+            else if (indexMassBody > 24)
+            {
+                Console.WriteLine(" - ИМТ превышает норму!");
+            }
+            else if (indexMassBody < 18)
+            {
+                Console.WriteLine(" - ИМТ ниже нормы!");
+            }
+        }
+//----------------------------------------------------------------------------------------------------------------------------------------------
     }
 }
