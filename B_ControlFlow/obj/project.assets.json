@@ -15,11 +15,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\source\\repos\\CSharpUdemy\\A_CSharpUdemy.csproj",
-      "projectName": "A_CSharpUdemy",
-      "projectPath": "C:\\Users\\User\\source\\repos\\CSharpUdemy\\A_CSharpUdemy.csproj",
+      "projectUniqueName": "C:\\Users\\User\\source\\repos\\CSharpUdemy\\B_ControlFlow\\B_ControlFlow.csproj",
+      "projectName": "B_ControlFlow",
+      "projectPath": "C:\\Users\\User\\source\\repos\\CSharpUdemy\\B_ControlFlow\\B_ControlFlow.csproj",
       "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\source\\repos\\CSharpUdemy\\obj\\",
+      "outputPath": "C:\\Users\\User\\source\\repos\\CSharpUdemy\\B_ControlFlow\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
