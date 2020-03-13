@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "A_CSharpUdemy", "A_CSharpUd
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "B_ControlFlow", "B_ControlFlow\B_ControlFlow.csproj", "{1491BFD1-D3B3-4C1D-9BD2-D3A703DB443A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "C_ArraysCollections", "C_ArraysCollections\C_ArraysCollections.csproj", "{B9CA3244-BEEB-427E-9889-2EF36F96E118}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C_ArraysCollections", "C_ArraysCollections\C_ArraysCollections.csproj", "{B9CA3244-BEEB-427E-9889-2EF36F96E118}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D_OOP", "D_OOP\D_OOP.csproj", "{2B06F6A5-C30B-4C76-AAA7-B8D8F398F268}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{B9CA3244-BEEB-427E-9889-2EF36F96E118}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9CA3244-BEEB-427E-9889-2EF36F96E118}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B9CA3244-BEEB-427E-9889-2EF36F96E118}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B06F6A5-C30B-4C76-AAA7-B8D8F398F268}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B06F6A5-C30B-4C76-AAA7-B8D8F398F268}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B06F6A5-C30B-4C76-AAA7-B8D8F398F268}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B06F6A5-C30B-4C76-AAA7-B8D8F398F268}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
