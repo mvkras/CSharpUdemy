@@ -1,4 +1,5 @@
 ﻿using D_OOP.Classes;
+using D_OOP.Classes.Polymorphism;
 using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
@@ -81,11 +82,64 @@ namespace D_OOP
             }
             
             Swap(8, 6);
-            SwapAuto(); //Значения вводит пользователь
-            SwapFromFull(); //С защитой от дурака
-            
+      //      SwapAuto(); //Значения вводит пользователь
+       //     SwapFromFull(); //С защитой от дурака
+
+            //Bankomat наследование inheritence
+            ModelA terminalA = new ModelA(252);
+            terminalA.Connect();
+            ModelB terminalB = new ModelB(758);
+            terminalB.Connect();
+
+            //Car наследование
+            Car1 bmw = new Car1("Bmw", "Black", 2.6, 289.7);
+            bmw.CarInfo();
+            Car2 dodge = new Car2("Dodge", "Yellow", 6.0, 382.3);
+            dodge.CarInfo();
+
+            Console.WriteLine();
+
+            //Полиформизм (1 метод для каждого класса осуществляет свою операцию папка Polymorphism)
+            Rectangle rectangle = new Rectangle(width: 17.5, height: 22.3);
+            rectangle.Area();
+            rectangle.Perimeter();
+            rectangle.Draw();
+
+            Console.WriteLine();
+
+            Triangle triangle = new Triangle(a: 5.2, b: 6.3, c: 7.5);
+            triangle.Area();
+            triangle.Perimeter();
+            triangle.Draw();
+            Console.WriteLine();
+            Console.WriteLine();
+            /*Так как мы переопределили все эти методы, вызывающий код может унифицированно работать со всеми этими типами/классами
+             * используя базовый класс/абстрактный, записать экземпляр абстрактного класса можно в виде массива и передать туда наши 
+             * классы - наследники в этот массив*/
+            Shapes[] shapes = new Shapes[2];
+            shapes[0] = new Triangle(6.3, 8.2, 9.7);
+            shapes[1] = new Rectangle(22.4, 18.7);
+            //Пройдемся foreach, используя базовый(абстрактный класс)
+            foreach (var shape in shapes)
+            {
+                shape.Area();
+                shape.Draw();
+                shape.Perimeter();               
+            }
+            Console.WriteLine();
+            Console.WriteLine();
+            Do(triangle);
+
         }
 //**************************************************--------МЕТОДЫ--------*********************************************************
+       static void Do(Shapes shapess)
+        {
+            shapess.Draw();
+            shapess.Perimeter();
+            shapess.Area();
+        }
+           
+        
         static void AddNumbers(List<int> numbers) //лист это класс (ссылочный тип)
         {
             numbers.Add(1);
