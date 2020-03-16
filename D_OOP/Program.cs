@@ -130,6 +130,18 @@ namespace D_OOP
             Console.WriteLine();
             Do(triangle);
 
+            MyStack<int> ms = new MyStack<int>(); //у нас 2 перегрузки массива (по умолчанию 4 элемента), либо выбрать размер какой необходим
+            ms.Push(1);
+            ms.Push(2);
+            ms.Push(3);
+            Console.WriteLine(ms.Peek());//Выведем последний добавленный элемент
+            ms.Pop(); //удалим последний элемент
+            Console.WriteLine(ms.Peek());
+            ms.Push(3);
+            ms.Push(4);
+            ms.Push(5); //чтобы произошло расширение стека, чтобы убедиться, что ничего не падает
+            Console.WriteLine(ms.Peek());
+
         }
 //**************************************************--------МЕТОДЫ--------*********************************************************
        static void Do(Shapes shapess)
