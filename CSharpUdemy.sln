@@ -9,7 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "B_ControlFlow", "B_ControlF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "C_ArraysCollections", "C_ArraysCollections\C_ArraysCollections.csproj", "{B9CA3244-BEEB-427E-9889-2EF36F96E118}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "D_OOP", "D_OOP\D_OOP.csproj", "{2B06F6A5-C30B-4C76-AAA7-B8D8F398F268}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "D_OOP", "D_OOP\D_OOP.csproj", "{2B06F6A5-C30B-4C76-AAA7-B8D8F398F268}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "E_Exceptions", "E_Exceptions\E_Exceptions.csproj", "{24946215-6C69-4858-85C1-E8831CFA3732}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "F_Stream_FileStream", "F_Stream_FileStream\F_Stream_FileStream.csproj", "{F984B34D-F3DB-4D57-B247-E512692F7401}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{2B06F6A5-C30B-4C76-AAA7-B8D8F398F268}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B06F6A5-C30B-4C76-AAA7-B8D8F398F268}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B06F6A5-C30B-4C76-AAA7-B8D8F398F268}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24946215-6C69-4858-85C1-E8831CFA3732}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24946215-6C69-4858-85C1-E8831CFA3732}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24946215-6C69-4858-85C1-E8831CFA3732}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24946215-6C69-4858-85C1-E8831CFA3732}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F984B34D-F3DB-4D57-B247-E512692F7401}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F984B34D-F3DB-4D57-B247-E512692F7401}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F984B34D-F3DB-4D57-B247-E512692F7401}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F984B34D-F3DB-4D57-B247-E512692F7401}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

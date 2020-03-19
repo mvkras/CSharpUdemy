@@ -1,0 +1,13 @@
+C:\Users\User\source\repos\CSharpUdemy\F_Stream_FileStream\bin\Debug\netcoreapp3.1\F_Stream_FileStream.exe
+C:\Users\User\source\repos\CSharpUdemy\F_Stream_FileStream\bin\Debug\netcoreapp3.1\F_Stream_FileStream.deps.json
+C:\Users\User\source\repos\CSharpUdemy\F_Stream_FileStream\bin\Debug\netcoreapp3.1\F_Stream_FileStream.runtimeconfig.json
+C:\Users\User\source\repos\CSharpUdemy\F_Stream_FileStream\bin\Debug\netcoreapp3.1\F_Stream_FileStream.runtimeconfig.dev.json
+C:\Users\User\source\repos\CSharpUdemy\F_Stream_FileStream\bin\Debug\netcoreapp3.1\F_Stream_FileStream.dll
+C:\Users\User\source\repos\CSharpUdemy\F_Stream_FileStream\bin\Debug\netcoreapp3.1\F_Stream_FileStream.pdb
+C:\Users\User\source\repos\CSharpUdemy\F_Stream_FileStream\obj\Debug\netcoreapp3.1\F_Stream_FileStream.csprojAssemblyReference.cache
+C:\Users\User\source\repos\CSharpUdemy\F_Stream_FileStream\obj\Debug\netcoreapp3.1\F_Stream_FileStream.csproj.CoreCompileInputs.cache
+C:\Users\User\source\repos\CSharpUdemy\F_Stream_FileStream\obj\Debug\netcoreapp3.1\F_Stream_FileStream.AssemblyInfoInputs.cache
+C:\Users\User\source\repos\CSharpUdemy\F_Stream_FileStream\obj\Debug\netcoreapp3.1\F_Stream_FileStream.AssemblyInfo.cs
+C:\Users\User\source\repos\CSharpUdemy\F_Stream_FileStream\obj\Debug\netcoreapp3.1\F_Stream_FileStream.dll
+C:\Users\User\source\repos\CSharpUdemy\F_Stream_FileStream\obj\Debug\netcoreapp3.1\F_Stream_FileStream.pdb
+C:\Users\User\source\repos\CSharpUdemy\F_Stream_FileStream\obj\Debug\netcoreapp3.1\F_Stream_FileStream.genruntimeconfig.cache
