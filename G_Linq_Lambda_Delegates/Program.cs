@@ -1,11 +1,15 @@
 ﻿using G_Linq_Lambda_Delegates.Classes;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using static G_Linq_Lambda_Delegates.Classes.Delegates;
 
 namespace G_Linq_Lambda_Delegates
 {
-    class Program  
+    class Program
     {
         static void Main(string[] args)
         {
@@ -50,7 +54,7 @@ namespace G_Linq_Lambda_Delegates
             func = Method3;
             func("Строка");
 
-            Func<int, int> funcWithValue = MethodValue;           
+            Func<int, int> funcWithValue = MethodValue;
             funcWithValue(15);
             Console.WriteLine();
             #endregion
@@ -62,10 +66,14 @@ namespace G_Linq_Lambda_Delegates
             John.DoWork += John_DoWork;//подписываемся на событие DoWork
             John.Sleep(DateTime.Parse("20.03.20 22:59:50"));
             John.Sleep(DateTime.Parse("20.03.20 07:58:50"));
+            Console.WriteLine();
 
-            
+
+            DisplayFoundFiles_WithoudLinq(@"G:\Программа для карточек стима");
+
+
         }
-
+        //********************************************************************************************************************************************
         private static void John_DoWork(object sender, EventArgs e)
         {
             if (sender is Person) //нам нужно этот тип object привести к типу Person. в нормальном проекте причем безопасно
@@ -76,10 +84,86 @@ namespace G_Linq_Lambda_Delegates
 
         private static void John_GoToSleep() //теперь для события, нам необходим обработчик события, нам нужно подписаться на это событие
         {
-            Console.WriteLine("Time to Sleep!");          
+            Console.WriteLine("Time to Sleep!");
+        }
+
+        //---------------------------------------------Linq_Lyambda_Expressions--------------------------------------------------------------------
+
+        /* Предположим надо разработать метод, который принмает путь к паапке и нам нужно взять первые 5 самых крупных файлов,
+        * которые находятся в этой папке */
+
+        public static void DisplayFoundFiles_WithoudLinq(string pathToDir) //метод поиска пути к папки без использования Linq
+        {
+            //забрать разные файлы с директории можно с помощью разных API
+            //создадим такой тип, который называется DirectoryInfo находится в System.IO
+            DirectoryInfo dirInfo = new DirectoryInfo(pathToDir); //в конструктор передается путь
+            FileInfo[] files = dirInfo.GetFiles(); //Имея этот экземпляр, мы можем запросить все файлы и вернет их  оттуда. Вернет массив экзепляров fileInfo
+
+            //теперь нам их необходимо отсортировать по длине
+            Array.Sort(files, FileComparison); //10 перегрузка с делегатом говорит о том как сортировать элементы, должны передать метод, который будет вызываться внутри Sort
+            //теперь запускаем цикл for в отсортированном массиве
+            for (int i = 0; i < 5; i++) //выводим топ 5
+            {
+                FileInfo file = files[i];
+                Console.WriteLine($"{file.Name} размер файла {file.Length}");
+            }
+        }
+
+        static int FileComparison(FileInfo x, FileInfo y) //должна принимать 2 экземпляра FileInfo, т.к чтобы сравнить, надо 2 экземпляра
+        {
+            //если хотим чтобы x был первым, он должен быть больше у и возвращать -1 должны
+            //Когда они равны - возвращаем 0
+            //Когда x должен идти после y возвращаем 1
+            //Возвращать 1 или -1 зависит от того в каком порядке возвращать значения (по убыванию или возрастанию)
+            if (x.Length == y.Length)
+            {
+                return 0;
+            }
+            if (x.Length > y.Length)
+            {
+                return -1;
+            }
+            return 1;  //На основе этого делегата FileComparison метод сортировки будет сравнивать значения и выводить большее 
+        }
+        //---------------------------------------------------Теперь с использованием Linq и Лямбда выражений------------------------------------------
+
+        private static void Find_Files_With_Linq(string pathToDIr)
+        {
+            //конструируем DirectoryInfo
+            new DirectoryInfo(pathToDIr) //как бы на экземпляре поставили точку
+           .GetFiles() //получили массив fileInfo
+           .OrderByDescending(file => file.Length) //GitFiles возвращает массив fileInfo на него поставили точку Нам нужно отсортировать по размеру
+           .Take(5) //затем нужно взять первые 5 файлов
+           .ForEach(file => Console.WriteLine($"{file.Name} размер: {file.Length}"));
+        }
+
+        //static long KeySelector(FileInfo file)
+        //{
+        //    return file.Length;
+        //}
+
+        
+
+    }
+
+    //Расширение для Linq в качестве цикла for
+    public static class LinqExtention
+    {
+        //все методы расширения - статические
+        public static void ForEach<T>(this IEnumerable<T> source, Action<T> action) //принимает так же делегат
+        {
+            //нечто, что будем делать с каждым из экзепляров, находяшимся в source
+            //можно проставить зашиту 
+            if(source == null)
+            {
+                throw new ArgumentNullException("Нельзя чтобы source был равен null");
+            }
+            foreach (var item in source)
+            {
+                action(item); 
+            }
         }
     }
 
-    
-   
+
 }
