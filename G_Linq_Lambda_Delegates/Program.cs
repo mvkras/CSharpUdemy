@@ -71,6 +71,102 @@ namespace G_Linq_Lambda_Delegates
 
             DisplayFoundFiles_WithoudLinq(@"G:\Программа для карточек стима");
 
+            //Linq
+            List<int> collection = new List<int>(); //создали список
+            for (var i = 0; i < 10; i++) //создали полную коллексию
+            {
+                collection.Add(i);
+            }
+            //записали с помощью запроса SQL
+            var result = from item in collection //выбрали первые 5
+                         where item < 5
+                         select item;
+            foreach (var item in result)
+            {
+                Console.WriteLine(item);
+            }
+            Console.WriteLine();//пропуск
+
+            //Тоже самое с помощью методов расширений
+            var result2 = collection.Where(item => item < 5)
+                                    .Where(item => item % 2 == 0) //четные 
+                                    .OrderByDescending(item => item); 
+
+            foreach (var item in result2)
+            {
+                Console.WriteLine(item);
+            }
+
+            //Будет создаваться коллекция наших продуктов (другой пример)
+            //создадим генератор случайных чисел
+            var random = new Random();
+            
+            List<Linq_And_Lyambda_Expressions> productCollection = new List<Linq_And_Lyambda_Expressions>();
+            for (var i = 0; i < 10; i++) //создали полную коллексию
+            {
+                var product = new Linq_And_Lyambda_Expressions()
+                {
+                    Name = "Продукт " + i,
+                    Energy = random.Next(10, 500)
+                };
+                productCollection.Add(product); //заполняем нашу коллекцию
+            }
+            var productResult = productCollection.Where(item => item.Energy < 200);
+            foreach (var item in productResult)
+            {
+                Console.WriteLine(item);
+            }
+
+            //Преобразование 1 типа в другой Select. В Linq select служит для преобразования
+            //Из списка продуктов мы делаем список целых чисел
+            List<Linq_And_Lyambda_Expressions> products = new List<Linq_And_Lyambda_Expressions>();
+            for (var i = 0; i < 10; i++) //создали полную коллексию
+            {
+                var product = new Linq_And_Lyambda_Expressions()
+                {
+                    Name = "Продукт " + i,
+                    Energy = random.Next(10, 15)
+                };
+                products.Add(product); //заполняем нашу коллекцию
+            }
+            var selectCollection = products.Select(product => product.Energy); 
+            foreach (var res in selectCollection) 
+            {
+                Console.WriteLine(res);
+            }
+            var orderProducts = products.OrderBy(product => product.Energy).ThenBy(product => product.Name); //на выходе получили коллекцию целых чисел
+            foreach (var res in orderProducts) //чтобы упорядочить по 2м условиям нужно использовать then by. но только после OrderBy
+            {
+                Console.WriteLine(res);
+            }
+            Console.WriteLine();
+            var groupByEnergy = products.GroupBy(product => product.Energy); //разобьем продукты по энергетической ценности                                                                                
+            foreach (var group in groupByEnergy) //его надо перебирать с помощью цикла так как это список списка возвращает гурппированный элемент     
+            {
+                  
+                Console.WriteLine($"Ключ: {group.Key}"); //первый элемент является ключем, 2й коллекцией элементы которые удолетворяют этому ключу
+                foreach (var item in group) //здесь уже идет перебор элементов
+                {
+                    Console.WriteLine($"\t{item}");
+                }
+            }
+            Console.WriteLine();
+            //Linq продолжение по ChessPlayers напишем метод который выводит max, min, avg рейтинг топ 10
+            static void MinMax_Avg(string file) //будет принимать путь к файлу
+            {
+                List<ChessPlayer> list = File.ReadAllLines(file) //начнем с чтения возвращает массив string
+                                         .Skip(1) //на массиве можно вызывать точку. Пропускаем первую строчку т.к. там наименования
+                                         .Select(ChessPlayer.ParseFile) //берет элемент и трансформирует в другой тип 
+                                         .Where(x => x.BirthYear > 1988)
+                                         .OrderByDescending(player => player.Raiting) //отсортируем по убыванию
+                                         .Take(10)
+                                         .ToList(); //чтобы работать со списокм метод расширения, который превращает в List
+                Console.WriteLine($"The lowest raiting in top 10: " +
+                    $"{list.Min(x => x.Raiting)}, max raiting: {list.Max(x => x.Raiting)}, " +
+                    $"avg: {list.Average(x => x.Raiting)}");
+            }
+
+            MinMax_Avg("Top100ChessPlayers.csv");
 
         }
         //********************************************************************************************************************************************
@@ -164,6 +260,8 @@ namespace G_Linq_Lambda_Delegates
             }
         }
     }
+
+   
 
 
 }
