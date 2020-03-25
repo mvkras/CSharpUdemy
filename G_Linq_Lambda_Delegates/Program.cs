@@ -13,6 +13,7 @@ namespace G_Linq_Lambda_Delegates
     {
         static void Main(string[] args)
         {
+            
             #region delegates
             //мы дергаем делегат и он вызывает метод, такая цепочка событий появляется, тянет за собой
             MyDelegate myDelegate = Method1; //присваеваем метод делегату и вызываем метод через делегат
@@ -167,7 +168,25 @@ namespace G_Linq_Lambda_Delegates
             }
 
             MinMax_Avg("Top100ChessPlayers.csv");
-
+            RemoveForEach(); //Модификация метода foreach
+            RemoveAllFromList(); //С использованием RemoveAll
+           
+            static void RusChessPlayers(string file)
+            {
+                Console.WriteLine("Список Российских шахматистов: ");
+                List<ChessHomeWork> list = File.ReadAllLines(file)
+                                           .Skip(1)
+                                           .Select(ChessHomeWork.ParseInfo) //В Select строчки передаем которые парсятся
+                                           .Where(player => player.Country == "RUS")
+                                           .OrderBy(player => player.BirthDay)
+                                           .ToList();
+                foreach (var item in list)
+                {
+                    Console.WriteLine($"\t{item}");
+                }
+                
+            }
+            RusChessPlayers("Top100ChessPlayers.csv");
         }
         //********************************************************************************************************************************************
         private static void John_DoWork(object sender, EventArgs e)
@@ -238,7 +257,50 @@ namespace G_Linq_Lambda_Delegates
         //    return file.Length;
         //}
 
-        
+        //Модицикация цикла foreach в этом цикле нельзя ничего менять, нужно использовать цикл for и i--
+        static void RemoveForEach()
+        {
+            List<int> list = new List<int> { 0, 1, 2, 3, 4, 5 };
+            for (int i = 0; i < list.Count; i++)
+            {
+                if (list[i] <= 3)
+                {
+                    var item = list[i];
+                    list.Remove(item);
+                    i--;
+                }              
+            }
+            Console.WriteLine(list.Count);
+        }
+
+        static void RemoveFromBackSide() //удаление в обратном порядке
+        {
+            static void RemoveForEach()
+            {
+                List<int> list = new List<int> { 0, 1, 2, 3, 4, 5 };
+                for (int i = list.Count-1; i >= 0; i--)
+                {
+                    if (list[i] <= 3)
+                    {
+                        var item = list[i];
+                        list.Remove(item);
+                        i--;
+                    }
+                }
+                Console.WriteLine(list.Count);
+            }
+        }
+        //3й способ Remove All 
+        static void RemoveAllFromList()
+        {
+            List<int> list = new List<int> { 0, 1, 2, 3, 4, 5 };
+            list.RemoveAll(list => list <= 3);
+            foreach (var item in list)
+            {
+                Console.WriteLine(item);
+            }
+           
+        }
 
     }
 
@@ -259,6 +321,8 @@ namespace G_Linq_Lambda_Delegates
                 action(item); 
             }
         }
+
+       
     }
 
    

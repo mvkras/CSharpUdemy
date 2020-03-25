@@ -12,7 +12,7 @@ namespace G_Linq_Lambda_Delegates.Classes
         public int BirthYear { get; set; }
         public int Raiting { get; set; }
         public int ID { get; set; }
-
+        
         public override string ToString() //выводи полное квалифицированное имя класса
         {
             return $"Full Name: {Name} {Surname}, Raiting = {Raiting}, from country: {Country}, born in {BirthYear}"; //выводил бы текстовое описание
