@@ -19,6 +19,10 @@ namespace C_ArraysCollections
            //MultyMassives(); //Многомерные массивы
            //SawArrays(); //Зубчатые массивы
             HomeWorkParsing(); //Парсинг Римских чисел
+            BubbleSort();
+            Console.WriteLine();
+            Console.WriteLine(RomanNumeral.Parse("XIV")); //Парсинг римских чисел
+
         }
 
         //*************************************************************************************************************************************
@@ -345,6 +349,30 @@ namespace C_ArraysCollections
                XIV = 10 - 1 + 5= 9 + 5 = 14
              */
         }
+
+        static void BubbleSort() //сортировка пузырьком
+        {
+            int[] unsortedArray = { 1, 4, 3, 2, 6, 5, 0, 7, 9, 8, 11, 10 }; //инициализировали массив
+            int temp; //наша переменная
+            for (int i = 0; i < unsortedArray.Length-1; i++) //внещний цикл
+            {
+                for (int j = i+1; j < unsortedArray.Length; j++) //Сначала он от начала до конца пройдет по внутреннему циклу, 
+                {                                               //затем +1 на внешний цикл. 
+                                                               //Сперва проверит все значения с 0 индексом, затем с 1 и тд
+                    if (unsortedArray[i] > unsortedArray[j]) //условие, если 1 значение больше другого - поменять местами
+                    {
+                        temp = unsortedArray[i];  
+                        unsortedArray[i] = unsortedArray[j];
+                        unsortedArray[j] = temp;
+                    }                                     
+                }                
+            }
+            foreach (var item in unsortedArray) //выводим наш цикл вновь
+            {
+                Console.Write($"{item} ");
+            }
+        }
+
            
     }
 

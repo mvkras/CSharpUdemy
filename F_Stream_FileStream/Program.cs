@@ -119,7 +119,7 @@ namespace F_Stream_FileStream
             string readAllText = File.ReadAllText("testingFiles.txt");
             Console.WriteLine(readAllText);
 
-            //Прочитать не в массив, а в IEnumerable стринга
+            //Прочитать не в массив, а в IEnumerable стринга, либо так же можно использовать List
             IEnumerable<string> enumerable = File.ReadAllLines("testingFiles.txt");
             foreach (string enumText in enumerable)
             {
