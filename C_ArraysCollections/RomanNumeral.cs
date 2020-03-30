@@ -6,9 +6,9 @@ namespace C_ArraysCollections
 {
     class RomanNumeral
     {
-        private static Dictionary<char, int> map = new Dictionary<char, int>()
+        private static Dictionary<char, int> map = new Dictionary<char, int>() //создали словарь
         {
-            { 'I', 1 },
+            { 'I', 1 }, //ключ - значение
             { 'V', 5 },
             { 'X', 10 },
             { 'L', 50 },

@@ -1,4 +1,5 @@
 ﻿using G_Linq_Lambda_Delegates.Classes;
+using G_Linq_Lambda_Delegates.Interfaces;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -187,6 +188,20 @@ namespace G_Linq_Lambda_Delegates
                 
             }
             RusChessPlayers("Top100ChessPlayers.csv");
+
+            //Интерфейсы
+            List<ICar> cars = new List<ICar>();
+            cars.Add(new BMW()); //В этот список машин может добавлять наши классы
+            cars.Add(new LadaSedan()); //Создали массив объектов, который можем помещать любые классы
+            cars.Add(new Toyota());
+            foreach(var item in cars)
+            {                
+                Console.WriteLine("Затраченно время машин: "+item.Move(965)+"часов");
+            }
+            Cyborg cyborg = new Cyborg();
+            Console.WriteLine("Киборг пробежал 75 км за "+((IPerson)cyborg).Move(75)+" часа"); //явное привидение интерфейса
+
+
         }
         //********************************************************************************************************************************************
         private static void John_DoWork(object sender, EventArgs e)

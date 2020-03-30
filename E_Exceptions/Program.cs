@@ -6,7 +6,8 @@ namespace E_Exceptions
     {
         static void Main(string[] args)
         {
-            ParseNumber();
+        //    ParseNumber();
+            DivideOnZero();
         }
 
         //Попробуем у пользователя запросить какой-нибудь ввод (ввод целого числа) и попытаемся его отпарсить
@@ -28,6 +29,24 @@ namespace E_Exceptions
             }
             Console.WriteLine($"Пользователь ввел: {number}");
 
+        }
+        static void DivideOnZero()
+        {
+            try
+            {
+                int i = 5;
+                int j = i / 0;
+                Console.WriteLine(j);
+
+            }
+            catch(DivideByZeroException ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally //В этот блок записывается закрытие потока, файла, освобождение потока
+            {
+                Console.WriteLine("Работа завершена");
+            }
         }
     }
 }
