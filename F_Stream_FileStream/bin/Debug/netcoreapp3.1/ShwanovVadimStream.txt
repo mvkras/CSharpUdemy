@@ -1,0 +1,2 @@
+Вадим Шванов - самый топовый C# разработчик в ру сигментеWriteLine - переход на новую строчку
+Learning Stream by using Stream

@@ -12,7 +12,8 @@ namespace F_Stream_FileStream
         {
             FStream(); //запускаем файл стрим
             FileStream(); //практикуемся
-            AutoStream();  
+            AutoStream();
+            StreamByShvanov(); //Потоки от Вадима Шванова C#
         }
 
         static void FStream() //РАбота с файлами
@@ -130,6 +131,34 @@ namespace F_Stream_FileStream
                 Console.WriteLine(enumText); //вся инфа будет в 1 линию
             }
             
+        }
+
+        //Шванов Вадим про потоки и чтение файлов
+        static void StreamByShvanov()
+        {                      //StreamWriter - поток для записи данных
+            using (var sw = new StreamWriter("ShwanovVadimStream.txt", true, Encoding.UTF8))  //и спользованием using Позволяет создать объект с использованием только этого блока кода
+            {        //При выходе за скобки, этот объект будет уничтожен методом Dispose()
+                     //Объявляем объект потока в скобках using
+                sw.Write("Вадим Шванов - самый топовый C# разработчик в ру сигменте"); //передаем данные, которые будут записаны
+                sw.WriteLine("WriteLine - переход на новую строчку");
+                sw.WriteLine("Learning Stream by using Stream");
+            }
+            /* Сперва нужно открыть файл(создать поток) 
+             * Что-то оттуда прочитать / записать
+             * Корректно закрыть
+             * 
+             * По умолчанию, файл перезаписывается, чтобы дописывать данные в файл, нужно передать bool параметр true
+             */
+
+            //Теперь почитаем наш файл
+            using (var sr = new StreamReader("ShwanovVadimStream.txt"))
+            {
+                //чтобы прочитать данные, их нужно записать в переменную
+                string text = sr.ReadToEnd();
+                Console.WriteLine(text);
+            }
+            
+
         }
 
     }
