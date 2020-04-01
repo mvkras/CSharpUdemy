@@ -14,11 +14,12 @@ namespace F_Stream_FileStream
             FileStream(); //практикуемся
             AutoStream();
             StreamByShvanov(); //Потоки от Вадима Шванова C#
+            WriteFile();
         }
 
         static void FStream() //РАбота с файлами
         {
-            Stream fs = new FileStream("test.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite); //клавный класс Stream для работы с файлами и потоками создали экземпляр FileStream
+            Stream fs = new FileStream("test.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite); //главный класс Stream для работы с файлами и потоками создали экземпляр FileStream
                                                                                                  //Прописываем путь к файлу. FileMode - режим работы с файлом, потоком, FileAccess - доступ к файлу
             try
             {
@@ -159,6 +160,45 @@ namespace F_Stream_FileStream
             }
             
 
+        }
+
+        static void WriteFile()
+        {
+            Stream stream = new FileStream("newFileForStream.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            try
+            {
+                string str = "Hello, my name is mvkras!";
+                byte[] strInBytes = Encoding.UTF8.GetBytes(str);
+                stream.Write(strInBytes, 0, strInBytes.Length);
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                stream.Close();
+            }
+            //Читаем файл
+            using (Stream readingStream = new FileStream("newFileForStream.txt", FileMode.Open, FileAccess.Read))
+            {
+                byte[] temp = new byte[readingStream.Length];
+
+                int NotYetReaded = (int)readingStream.Length;
+                int AlreadyReaded = 0;
+                while(NotYetReaded > 0)
+                {
+                    int n = readingStream.Read(temp, AlreadyReaded, NotYetReaded);  //будем запоминать количество вычитеннах байтов
+                    if (n == 0)
+                    {
+                        break;
+                    }
+                    AlreadyReaded += n;
+                    NotYetReaded -= n;
+                }
+                string str = Encoding.ASCII.GetString(temp, 0, temp.Length); //перевод строки байтов в строку
+                Console.WriteLine(str);
+            }
         }
 
     }

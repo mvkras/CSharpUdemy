@@ -1,5 +1,6 @@
 ﻿using D_OOP.Classes;
 using D_OOP.Classes.Polymorphism;
+using D_OOP.ShvanovVadomOOP;
 using System;
 using System.Collections.Generic;
 using System.Net.Http.Headers;
@@ -142,9 +143,26 @@ namespace D_OOP
             ms.Push(5); //чтобы произошло расширение стека, чтобы убедиться, что ничего не падает
             Console.WriteLine(ms.Peek());
 
+            //Вадим Шванов
+            ShvanovCar shamovCar = new ShvanovCar();
+            shamovCar.CarInfo();
+            ShvanovCar shCar = new ShvanovCar("F1", 260);
+            shCar.CarInfo();
+           
+            RandomNumbers();
+
+
+
+
         }
 //**************************************************--------МЕТОДЫ--------*********************************************************
-       static void Do(Shapes shapess)
+        static void RandomNumbers()
+        {
+            Random rand = new Random();
+           int a = rand.Next(0, 15);
+            Console.WriteLine(a);
+        }
+        static void Do(Shapes shapess)
         {
             shapess.Draw();
             shapess.Perimeter();
